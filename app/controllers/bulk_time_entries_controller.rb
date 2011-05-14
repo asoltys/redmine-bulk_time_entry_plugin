@@ -13,7 +13,8 @@ class BulkTimeEntriesController < ApplicationController
   protect_from_forgery :only => [:index, :save]
   
   def index
-    @time_entries = [TimeEntry.new(:spent_on => today_with_time_zone.to_s)]
+    params[:date] ||= today_with_time_zone
+    @time_entries = [TimeEntry.new(:spent_on => params[:date].to_s)]
   end
 
   def load_assigned_issues
