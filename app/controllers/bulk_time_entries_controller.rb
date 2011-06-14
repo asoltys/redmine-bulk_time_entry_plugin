@@ -2,6 +2,7 @@
 class BulkTimeEntriesController < ApplicationController
   unloadable
   layout 'base'
+  before_filter :require_login
   before_filter :load_activities
   before_filter :load_allowed_projects
   before_filter :load_first_project
